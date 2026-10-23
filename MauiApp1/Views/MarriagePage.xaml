@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:MauiApp1.Behaviors"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.MarriagePage"
+             Title="Marriage Registry"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" MaximumWidthRequest="800">
+
+            <!-- Page Header -->
+            <VerticalStackLayout Spacing="4" HorizontalOptions="Center" Margin="0,10,0,5">
+                <Label Text="Marriage Register Form" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="{StaticResource Primary}" 
+                       HorizontalOptions="Center" />
+
+                <Label Text="Register Holy Matrimony and physical ledger details" 
+                       FontSize="13" 
+                       TextColor="{StaticResource TextMuted}" 
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- 1. Groom Details Section -->
+            <controls:AccentCard AccentColor="{StaticResource Primary}"
+                                CardBackgroundColor="{StaticResource ParishSurface}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Groom Information" 
+                           FontAttributes="Bold" 
+                           FontSize="16" 
+                           TextColor="{StaticResource Primary}" />
+
+                    <!-- Groom Lookup Bar -->
+                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                        <Border Grid.Column="0" 
+                                Stroke="{StaticResource Gray300}" 
+                                StrokeShape="RoundRectangle 8" 
+                                BackgroundColor="{StaticResource White}" 
+                                Padding="8,2">
+                            <Entry x:Name="GroomLookupEntry" 
+                                   Placeholder="Search Groom by Full Name..." 
+                                   PlaceholderColor="{StaticResource Gray400}" 
+                                   TextColor="{StaticResource TextPrimary}" 
+                                   BackgroundColor="Transparent" 
+                                   TextChanged="GroomLookupEntry_TextChanged" />
+                        </Border>
+
+                        <Button Grid.Column="1" 
+                                x:Name="GroomLookupButton" 
+                                Text="Search" 
+                                Clicked="OnLookupGroomClicked" 
+                                BackgroundColor="{StaticResource Primary}" 
+                                TextColor="{StaticResource White}" 
+                                FontAttributes="Bold" 
+                                CornerRadius="8" 
+                                Padding="16,0" />
+                    </Grid>
+
+                    <!-- Groom First Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="GroomFirstNameEntry" Placeholder="Groom First Name" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Groom Middle Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="GroomMiddleNameEntry" Placeholder="Groom Middle Name (optional)" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Groom Last Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="GroomLastNameEntry" Placeholder="Groom Last Name" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+                </VerticalStackLayout>
+            </controls:AccentCard>
+
+            <!-- 2. Bride Details Section -->
+            <controls:AccentCard AccentColor="{StaticResource RoyalPurple}"
+                                CardBackgroundColor="{StaticResource ParishSurface}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Bride Information" 
+                           FontAttributes="Bold" 
+                           FontSize="16" 
+                           TextColor="{StaticResource RoyalPurple}" />
+
+                    <!-- Bride Lookup Bar -->
+                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                        <Border Grid.Column="0" 
+                                Stroke="{StaticResource Gray300}" 
+                                StrokeShape="RoundRectangle 8" 
+                                BackgroundColor="{StaticResource White}" 
+                                Padding="8,2">
+                            <Entry x:Name="BrideLookupEntry" 
+                                   Placeholder="Search Bride by Full Name..." 
+                                   PlaceholderColor="{StaticResource Gray400}" 
+                                   TextColor="{StaticResource TextPrimary}" 
+                                   BackgroundColor="Transparent" 
+                                   TextChanged="BrideLookupEntry_TextChanged" />
+                        </Border>
+
+                        <Button Grid.Column="1" 
+                                x:Name="BrideLookupButton" 
+                                Text="Search" 
+                                Clicked="OnLookupBrideClicked" 
+                                BackgroundColor="{StaticResource RoyalPurple}" 
+                                TextColor="{StaticResource White}" 
+                                FontAttributes="Bold" 
+                                CornerRadius="8" 
+                                Padding="16,0" />
+                    </Grid>
+
+                    <!-- Bride First Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="BrideFirstNameEntry" Placeholder="Bride First Name" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Bride Middle Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="BrideMiddleNameEntry" Placeholder="Bride Middle Name (optional)" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Bride Last Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="BrideLastNameEntry" Placeholder="Bride Last Name" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+                </VerticalStackLayout>
+            </controls:AccentCard>
+
+            <!-- 3. Marriage Ceremony Details -->
+            <controls:AccentCard AccentColor="{StaticResource MarianBlue}"
+                                CardBackgroundColor="{StaticResource ParishSurface}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Marriage Ceremony Details" 
+                           FontAttributes="Bold" 
+                           FontSize="16" 
+                           TextColor="{StaticResource MarianBlue}" />
+
+                    <!-- Date of Marriage -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Date of Marriage:" FontAttributes="Bold" FontSize="13" TextColor="{StaticResource TextPrimary}" />
+                        <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                            <DatePicker x:Name="MarriageDatePicker" Format="yyyy-MM-dd" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Officiating Priest -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="PriestEntry" Placeholder="Officiating Priest" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- First Witness -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="Witness1Entry" Placeholder="First Witness (Best Man)" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Second Witness -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="Witness2Entry" Placeholder="Second Witness (Maid of Honor)" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+
+                    <!-- Church / Prayer House Name -->
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                        <Entry x:Name="PrayerHouseEntry" Placeholder="Prayer House / Church Name" PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                            <Entry.Behaviors>
+                                <behaviors:TitleCaseBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+                </VerticalStackLayout>
+            </controls:AccentCard>
+
+            <!-- 4. Physical Ledger Reference -->
+            <controls:AccentCard AccentColor="{StaticResource Secondary}"
+                                CardBackgroundColor="{StaticResource ParishSurface}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Physical Ledger Reference" 
+                           FontAttributes="Bold" 
+                           FontSize="16" 
+                           TextColor="{StaticResource Secondary}" />
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <Border Grid.Column="0" Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                            <Entry x:Name="BookNumberEntry" Placeholder="Book No." PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" BackgroundColor="Transparent">
+                                <Entry.Behaviors>
+                                    <behaviors:UpperCaseBehavior />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
+
+                        <Border Grid.Column="1" Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                            <Entry x:Name="PageNumberEntry" Placeholder="Page No." PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" Keyboard="Numeric" BackgroundColor="Transparent" />
+                        </Border>
+
+                        <Border Grid.Column="2" Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" BackgroundColor="{StaticResource White}" Padding="8,2">
+                            <Entry x:Name="EntryNumberEntry" Placeholder="Entry No." PlaceholderColor="{StaticResource Gray400}" TextColor="{StaticResource TextPrimary}" Keyboard="Numeric" BackgroundColor="Transparent" />
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </controls:AccentCard>
+
+            <!-- Save Action Button & Status -->
+            <Button x:Name="SaveButton"
+                    Text="Save Marriage Record" 
+                    Clicked="OnSaveMarriageClicked" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    TextColor="{StaticResource White}" 
+                    FontAttributes="Bold" 
+                    HeightRequest="48"
+                    CornerRadius="8"
+                    Margin="0,10,0,0" />
+
+            <Label x:Name="StatusLabel" 
+                   HorizontalOptions="Center" 
+                   TextColor="{StaticResource Success}" 
+                   FontSize="14"
+                   FontAttributes="Bold" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,4 +1,4 @@
-﻿namespace MatiriParish.Registry.Models
+﻿namespace MauiApp1.Models
 {
     public class ConfirmationRecord
     {
@@ -13,6 +13,8 @@
 
         public string SponsorName { get; set; } = string.Empty;
         public string? Remarks { get; set; }
+        // Prayer House where the sacrament was held
+        public string PrayerHouse { get; set; } = string.Empty;
 
         // Foreign Key
         public int PersonId { get; set; }

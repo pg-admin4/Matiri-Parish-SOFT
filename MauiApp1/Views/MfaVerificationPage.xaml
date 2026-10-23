@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.MfaVerificationPage"
+             Title="Verify Code"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <ScrollView>
+        <Grid Padding="20">
+            <!-- Centered card container -->
+            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+
+                <controls:AccentCard
+                    WidthRequest="380"
+                    AccentColor="{StaticResource Primary}"
+                    CardBackgroundColor="{StaticResource ParishSurface}">
+
+                    <VerticalStackLayout Spacing="16" Padding="8">
+
+                        <!-- Header Section -->
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="Enter Security Code" 
+                                   FontSize="22" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{StaticResource TextPrimary}" 
+                                   HorizontalOptions="Center" />
+
+                            <Label Text="Enter the 6-digit code generated for your account (expires in 3 min)." 
+                                   FontSize="13" 
+                                   TextColor="{StaticResource TextMuted}" 
+                                   HorizontalOptions="Center" 
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+
+                        <!-- OTP Code Entry Field -->
+                        <Border Stroke="{StaticResource Gray300}"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="{StaticResource White}"
+                                Padding="8,4">
+                            <Entry Placeholder="123456" 
+                                   PlaceholderColor="{StaticResource Gray400}"
+                                   Text="{Binding OtpCode}" 
+                                   Keyboard="Numeric" 
+                                   MaxLength="6" 
+                                   HorizontalTextAlignment="Center" 
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   BackgroundColor="Transparent" />
+                        </Border>
+
+                        <!-- Error Message Label -->
+                        <Label Text="{Binding ErrorMessage}" 
+                               TextColor="{StaticResource Error}" 
+                               FontSize="13"
+                               HorizontalOptions="Center" 
+                               HorizontalTextAlignment="Center" />
+
+                        <!-- Verify Code Button -->
+                        <Button Text="Verify Code" 
+                                Command="{Binding VerifyOtpCommand}" 
+                                BackgroundColor="{StaticResource Primary}" 
+                                TextColor="{StaticResource White}" 
+                                HeightRequest="44" 
+                                CornerRadius="8"
+                                FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+                </controls:AccentCard>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

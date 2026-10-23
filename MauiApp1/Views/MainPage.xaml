@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.MainPage"
+             Title="Dashboard"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" MaximumWidthRequest="900">
+
+            <!-- Header Section -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Matiri Parish Management System" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="{StaticResource Primary}" />
+                <Label Text="System Overview &amp; Quick Actions" 
+                       FontSize="14" 
+                       TextColor="{StaticResource TextMuted}" />
+            </VerticalStackLayout>
+
+            <!-- Refresh Button -->
+            <Button Text="Refresh Stats" 
+                    Clicked="OnRefreshClicked" 
+                    HorizontalOptions="Start" 
+                    TextColor="{StaticResource White}" 
+                    BackgroundColor="{StaticResource Secondary}" />
+
+            <!-- Summary Cards Grid -->
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" ColumnSpacing="15" RowSpacing="15">
+
+                <!-- Total Persons Card -->
+                <controls:StatsCard x:Name="TotalPersonsCard" Grid.Row="0" Grid.Column="0"
+                                   AccentColor="{StaticResource Primary}"
+                                   IconBackgroundColor="{StaticResource WarmCream}"
+                                   Title="Total Registered Persons"
+                                   Subtitle="As of today">
+                    <controls:StatsCard.IconContent>
+                        <Label Text="👥" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource Primary}" />
+                    </controls:StatsCard.IconContent>
+                </controls:StatsCard>
+
+                <!-- Baptisms Card -->
+                <controls:StatsCard x:Name="TotalBaptismsCard" Grid.Row="0" Grid.Column="1"
+                                   AccentColor="{StaticResource MarianBlue}"
+                                   IconBackgroundColor="{StaticResource MarianBlueLight}"
+                                   Title="Baptism Records"
+                                   Subtitle="This year">
+                    <controls:StatsCard.IconContent>
+                        <Label Text="💧" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource MarianBlue}" />
+                    </controls:StatsCard.IconContent>
+                </controls:StatsCard>
+
+                <!-- Confirmation Card -->
+                <controls:StatsCard x:Name="TotalConfirmationsCard" Grid.Row="1" Grid.Column="0"
+                                   AccentColor="{StaticResource RoyalPurple}"
+                                   IconBackgroundColor="{StaticResource RoyalPurpleLight}"
+                                   Title="Confirmation Records"
+                                   Subtitle="This year">
+                    <controls:StatsCard.IconContent>
+                        <Label Text="✝️" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource RoyalPurple}" />
+                    </controls:StatsCard.IconContent>
+                </controls:StatsCard>
+
+                <!-- Marriage Card -->
+                <controls:StatsCard x:Name="TotalMarriagesCard" Grid.Row="1" Grid.Column="1"
+                                   AccentColor="{StaticResource ElegantGold}"
+                                   IconBackgroundColor="{StaticResource ElegantGoldLight}"
+                                   Title="Marriage Records"
+                                   Subtitle="This year">
+                    <controls:StatsCard.IconContent>
+                        <Label Text="💍" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource ElegantGold}" />
+                    </controls:StatsCard.IconContent>
+                </controls:StatsCard>
+
+            </Grid>
+
+            <!-- Quick Navigation Shortcuts -->
+            <Label Text="Quick Navigation" FontAttributes="Bold" FontSize="18" TextColor="{StaticResource Primary}" Margin="0,15,0,0" />
+
+            <Grid ColumnDefinitions="*, *, *" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Search Records" Clicked="OnGoToSearchClicked" Style="{StaticResource PrimaryActionButtonStyle}" />
+                <Button Grid.Column="1" Text="New Confirmation" Clicked="OnGoToConfirmationClicked" Style="{StaticResource PrimaryActionButtonStyle}" />
+                <Button Grid.Column="2" Text="New Marriage" Clicked="OnGoToMarriageClicked" Style="{StaticResource PrimaryActionButtonStyle}" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

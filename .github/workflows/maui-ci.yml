@@ -1,0 +1,49 @@
+name: MAUI CI - Android AAB and Windows MSIX
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-maui:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET (adjust version if your MAUI app targets a different SDK)
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Install workloads
+      run: |
+        dotnet workload restore
+
+    - name: Build solution
+      run: |
+        dotnet build "Matiri Parish SOFT.slnx" -c Release
+
+    - name: Publish Android AAB
+      run: |
+        REM Adjust TFM below if your MAUI project targets a different net (e.g., net7.0-android or net8.0-android)
+        dotnet publish MauiApp1 -f net8.0-android -c Release -o ./artifacts/android /p:AndroidPackageFormat=aab
+      continue-on-error: false
+
+    - name: Publish Windows MSIX
+      run: |
+        REM Build MSIX package (requires correct packaging configuration in project)
+        dotnet publish MauiApp1 -f net8.0-windows10.0.19041.0 -c Release -o ./artifacts/windows
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: maui-artifacts
+        path: |
+          artifacts/android
+          artifacts/windows
+
+    - name: Cleanup
+      run: echo "MAUI build finished"
+

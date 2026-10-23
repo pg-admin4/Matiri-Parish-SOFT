@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.PersonSelectionPage"
+             Title="Select Person"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto" Padding="20" RowSpacing="12">
+
+        <!-- Header Title & Selection Context -->
+        <VerticalStackLayout Grid.Row="0" Spacing="4">
+            <Label Text="Select Person" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   TextColor="{StaticResource Primary}" />
+
+            <Label Text="Multiple matches found. Please select the correct record from the list below:" 
+                   FontSize="13" 
+                   TextColor="{StaticResource TextMuted}" />
+        </VerticalStackLayout>
+
+        <!-- Total Records Count Indicator -->
+        <Label Grid.Row="1" 
+               x:Name="TotalLabel" 
+               Text="" 
+               FontSize="12" 
+               FontAttributes="Bold"
+               TextColor="{StaticResource TextMuted}" 
+               HorizontalOptions="Start" 
+               IsVisible="False" />
+
+        <!-- Matches Collection List -->
+        <Grid Grid.Row="2">
+            <CollectionView x:Name="MatchesCollection" 
+                            SelectionMode="Single" 
+                            Margin="0,4"
+                            RemainingItemsThreshold="3"
+                            RemainingItemsThresholdReached="MatchesCollection_RemainingItemsThresholdReached">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:AccentCard AccentColor="{StaticResource Primary}"
+                                            CardBackgroundColor="{StaticResource ParishSurface}"
+                                            Margin="0,4">
+                            <VerticalStackLayout Spacing="6" Padding="4">
+                                <!-- Full Name Header -->
+                                <Label Text="{Binding FullName}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="16" 
+                                       TextColor="{StaticResource TextPrimary}" />
+
+                                <!-- Details Metadata Grid -->
+                                <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" ColumnSpacing="12" RowSpacing="4">
+                                    <Label Grid.Row="0" Grid.Column="0"
+                                           Text="{Binding DateOfBirth, StringFormat='DOB: {0:yyyy-MM-dd}'}" 
+                                           FontSize="12" 
+                                           TextColor="{StaticResource TextMuted}" />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                           Text="{Binding BaptismBook, StringFormat='Baptism Book: {0}'}" 
+                                           FontSize="12" 
+                                           TextColor="{StaticResource TextMuted}" />
+
+                                    <Label Grid.Row="1" Grid.Column="0"
+                                           Text="{Binding FatherName, StringFormat='Father: {0}'}" 
+                                           FontSize="12" 
+                                           TextColor="{StaticResource TextMuted}" />
+
+                                    <Label Grid.Row="1" Grid.Column="1"
+                                           Text="{Binding MotherName, StringFormat='Mother: {0}'}" 
+                                           FontSize="12" 
+                                           TextColor="{StaticResource TextMuted}" />
+                                </Grid>
+                            </VerticalStackLayout>
+                        </controls:AccentCard>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Empty State / No Results Label -->
+            <Label x:Name="NoResultsLabel" 
+                   Text="No matches found." 
+                   IsVisible="False" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   FontSize="14"
+                   TextColor="{StaticResource Gray500}" />
+
+            <!-- Loading Indicator Overlay -->
+            <ActivityIndicator x:Name="LoadingIndicator" 
+                               IsVisible="False" 
+                               IsRunning="False" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center"
+                               Color="{StaticResource Primary}" />
+        </Grid>
+
+        <!-- Bottom Actions (Load More & Cancel) -->
+        <VerticalStackLayout Grid.Row="3" Spacing="10" Margin="0,10,0,0">
+            <Button x:Name="LoadMoreButton" 
+                    Text="Load More" 
+                    IsVisible="False" 
+                    Clicked="LoadMoreButton_Clicked"
+                    BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource White}"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="44" />
+
+            <Button x:Name="CancelButton"
+                    Text="Cancel" 
+                    BackgroundColor="{StaticResource Gray300}" 
+                    TextColor="{StaticResource TextPrimary}" 
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="44" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

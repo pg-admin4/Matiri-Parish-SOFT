@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.SearchPage"
+             Title="Search Records"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" MaximumWidthRequest="800">
+
+            <!-- Page Header -->
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Parish Records Lookup" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="{StaticResource Primary}" />
+
+                <Label Text="Search registry entries by person name or keywords" 
+                       FontSize="13" 
+                       TextColor="{StaticResource TextMuted}" />
+            </VerticalStackLayout>
+
+            <!-- Search Bar Controls -->
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                <Border Grid.Column="0" 
+                        Stroke="{StaticResource Gray300}" 
+                        StrokeShape="RoundRectangle 8" 
+                        BackgroundColor="{StaticResource White}" 
+                        Padding="8,2">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Label Text="🔍" 
+                               VerticalOptions="Center" 
+                               Margin="4,0,8,0"
+                               TextColor="{StaticResource TextMuted}" />
+                        <Entry x:Name="SearchEntry" 
+                               Grid.Column="1"
+                               Placeholder="Search by First Name or Last Name..." 
+                               PlaceholderColor="{StaticResource Gray400}" 
+                               TextColor="{StaticResource TextPrimary}" 
+                               BackgroundColor="Transparent" 
+                               Completed="OnSearchClicked" />
+                    </Grid>
+                </Border>
+
+                <Button Grid.Column="1" 
+                        Text="Search" 
+                        Clicked="OnSearchClicked" 
+                        BackgroundColor="{StaticResource Primary}" 
+                        TextColor="{StaticResource White}" 
+                        FontAttributes="Bold" 
+                        CornerRadius="8" 
+                        Padding="16,0" />
+            </Grid>
+
+            <!-- Status Message -->
+            <Label x:Name="StatusLabel" 
+                   TextColor="{StaticResource TextMuted}" 
+                   FontSize="13" />
+
+            <!-- Results List -->
+            <CollectionView x:Name="ResultsCollectionView" 
+                            SelectionMode="None" 
+                            Margin="0,4,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:AccentCard AccentColor="{StaticResource Primary}"
+                                            CardBackgroundColor="{StaticResource ParishSurface}"
+                                            Margin="0,4">
+                            <VerticalStackLayout Spacing="8" Padding="4">
+                                <!-- Person Full Name Header -->
+                                <Label Text="{Binding FullName}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{StaticResource Primary}" />
+
+                                <!-- Metadata Grid Details -->
+                                <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" ColumnSpacing="12" RowSpacing="4">
+                                    <Label Text="{Binding DateOfBirthText}" 
+                                           Grid.Row="0" 
+                                           Grid.Column="0" 
+                                           FontSize="13"
+                                           TextColor="{StaticResource TextMuted}" />
+
+                                    <Label Text="{Binding PlaceOfBirthText}" 
+                                           Grid.Row="0" 
+                                           Grid.Column="1" 
+                                           FontSize="13"
+                                           TextColor="{StaticResource TextMuted}" />
+
+                                    <Label Text="{Binding BaptismInfo}" 
+                                           Grid.Row="1" 
+                                           Grid.ColumnSpan="2" 
+                                           FontSize="13"
+                                           TextColor="{StaticResource TextPrimary}" 
+                                           FontAttributes="Italic" 
+                                           Margin="0,4,0,0" />
+                                </Grid>
+                            </VerticalStackLayout>
+                        </controls:AccentCard>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

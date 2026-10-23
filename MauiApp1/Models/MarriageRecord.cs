@@ -1,7 +1,10 @@
-﻿namespace MatiriParish.Registry.Models
+﻿namespace MauiApp1.Models
 {
     public class MarriageRecord
     {
+        internal string BestMan;
+        internal string MaidOfHonor;
+
         public int Id { get; set; }
         public DateTime DateOfMarriage { get; set; }
         public string OfficiatingPriest { get; set; } = string.Empty;
@@ -23,5 +26,7 @@
         public string Witness2Name { get; set; } = string.Empty;
 
         public string? Remarks { get; set; }
+        // Prayer House where the ceremony took place
+        public string PrayerHouse { get; set; } = string.Empty;
     }
 }

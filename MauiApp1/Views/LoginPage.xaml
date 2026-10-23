@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             x:Class="MauiApp1.Views.LoginPage"
+             Shell.FlyoutItemIsVisible="False"
+             Title="Login"
+             BackgroundColor="{StaticResource ParishBackground}">
+
+    <Grid Padding="20">
+        <!-- Centered card container -->
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+
+            <controls:AccentCard
+                WidthRequest="360"
+                AccentColor="{StaticResource Primary}"
+                CardBackgroundColor="{StaticResource ParishSurface}">
+
+                <VerticalStackLayout Spacing="16" Padding="8">
+
+                    <!-- Header -->
+                    <Label Text="Welcome Back" 
+                           FontSize="22" 
+                           FontAttributes="Bold" 
+                           TextColor="{StaticResource TextPrimary}" />
+
+                    <Label Text="Sign in to Matiri Parish Management System" 
+                           FontSize="13" 
+                           TextColor="{StaticResource TextMuted}" />
+
+                    <!-- Email Field -->
+                    <Border Stroke="{StaticResource Gray300}"
+                            StrokeShape="RoundRectangle 8"
+                            BackgroundColor="{StaticResource White}"
+                            Padding="8,4">
+                        <Grid ColumnDefinitions="Auto, *">
+                            <Label Text="✉" 
+                                   VerticalOptions="Center" 
+                                   Margin="4,0,8,0"
+                                   TextColor="{StaticResource TextMuted}" />
+                            <Entry x:Name="UsernameEntry" 
+                                   Placeholder="you@example.com" 
+                                   PlaceholderColor="{StaticResource Gray400}"
+                                   Grid.Column="1" 
+                                   BackgroundColor="Transparent" 
+                                   TextColor="{StaticResource TextPrimary}" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Password Field -->
+                    <Border Stroke="{StaticResource Gray300}"
+                            StrokeShape="RoundRectangle 8"
+                            BackgroundColor="{StaticResource White}"
+                            Padding="8,4">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Entry x:Name="PasswordEntry" 
+                                   Placeholder="Enter your password" 
+                                   PlaceholderColor="{StaticResource Gray400}"
+                                   IsPassword="True" 
+                                   BackgroundColor="Transparent" 
+                                   TextColor="{StaticResource TextPrimary}" 
+                                   Grid.Column="0" />
+                            <Button x:Name="TogglePasswordButton" 
+                                    Text="Show" 
+                                    Clicked="OnTogglePasswordClicked" 
+                                    Grid.Column="1" 
+                                    BackgroundColor="Transparent" 
+                                    TextColor="{StaticResource TextMuted}" 
+                                    Padding="4,0" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Forgot Password Link -->
+                    <HorizontalStackLayout HorizontalOptions="End">
+                        <Label Text="Forgot password?" 
+                               TextColor="{StaticResource Primary}" 
+                               FontSize="12"
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnForgotPasswordClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                    <!-- Sign In Primary Button -->
+                    <Button Text="Sign In" 
+                            Clicked="OnLoginClicked" 
+                            BackgroundColor="{StaticResource Primary}" 
+                            TextColor="{StaticResource White}" 
+                            HeightRequest="44" 
+                            CornerRadius="8"
+                            FontAttributes="Bold" />
+
+                    <!-- Divider -->
+                    <Grid VerticalOptions="Center" ColumnDefinitions="*, Auto, *">
+                        <BoxView Color="{StaticResource Gray300}" HeightRequest="1" VerticalOptions="Center" Grid.Column="0" />
+                        <Label Text="or" TextColor="{StaticResource TextMuted}" Margin="10,0" Grid.Column="1" FontSize="12" />
+                        <BoxView Color="{StaticResource Gray300}" HeightRequest="1" VerticalOptions="Center" Grid.Column="2" />
+                    </Grid>
+
+                    <!-- Google Sign-In Option -->
+                    <Border Stroke="{StaticResource Gray300}" 
+                            StrokeShape="RoundRectangle 8" 
+                            BackgroundColor="{StaticResource White}" 
+                            HeightRequest="44" 
+                            Padding="0">
+                        <HorizontalStackLayout Padding="8" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Frame WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   CornerRadius="12" 
+                                   BackgroundColor="#DB4437" 
+                                   Padding="0" 
+                                   HasShadow="False"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center">
+                                <Label Text="G" 
+                                       TextColor="{StaticResource White}" 
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                            </Frame>
+                            <Label Text="Sign in with Google" 
+                                   TextColor="{StaticResource TextPrimary}" 
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGoogleSignInClicked" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <!-- Registration Link -->
+                    <HorizontalStackLayout HorizontalOptions="Center" Margin="0,4,0,0">
+                        <Label Text="Don't have an account? " TextColor="{StaticResource TextMuted}" />
+                        <Label Text="Create one" 
+                               TextColor="{StaticResource Primary}" 
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRegisterAdminClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                    <!-- Error Alert Label -->
+                    <Label x:Name="ErrorMessageLabel" 
+                           TextColor="{StaticResource Error}" 
+                           IsVisible="False" 
+                           HorizontalOptions="Center" 
+                           FontSize="13" />
+
+                </VerticalStackLayout>
+            </controls:AccentCard>
+        </Grid>
+    </Grid>
+</ContentPage>

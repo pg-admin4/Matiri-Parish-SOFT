@@ -3,42 +3,118 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
+    <!-- Matiri Parish Primary Theme Palette -->
+    <Color x:Key="Primary">#5C0601</Color>
+    <Color x:Key="PrimaryDark">#3F0400</Color>
+    <Color x:Key="PrimaryDarkText">#FFFFFF</Color>
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
-    <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
+    <!-- Secondary & Accent Highlights -->
+    <Color x:Key="Secondary">#C88A2B</Color>
+    <Color x:Key="SecondaryDarkText">#2C0200</Color>
+    <Color x:Key="Tertiary">#6E4D43</Color>
 
-    <Color x:Key="White">White</Color>
-    <Color x:Key="Black">Black</Color>
-    <Color x:Key="Magenta">#D600AA</Color>
+    <!-- Interactive States -->
+    <Color x:Key="PrimaryHover">#730801</Color>
+    <Color x:Key="PrimaryPressed">#400400</Color>
+    <Color x:Key="FocusRing">#80C88A2B</Color>
+
+    <!-- Semantic Status Colors -->
+    <Color x:Key="Success">#16A34A</Color>
+    <Color x:Key="Warning">#F59E0B</Color>
+    <Color x:Key="Error">#DC2626</Color>
+    <Color x:Key="Info">#2563EB</Color>
+
+    <!-- Base Neutrals & Surfaces -->
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="ParishSurface">#FFFDF9</Color>
+    <Color x:Key="ParishBackground">#F7F4EE</Color>
+    <Color x:Key="OffBlack">#2C0200</Color>
+
+    <!-- Slate Scale (Clean Light/Dark Support) -->
+    <Color x:Key="Gray100">#F8FAFC</Color>
+    <Color x:Key="Gray200">#E2E8F0</Color>
+    <Color x:Key="Gray300">#CBD5E1</Color>
+    <Color x:Key="Gray400">#94A3B8</Color>
+    <Color x:Key="Gray500">#64748B</Color>
+    <Color x:Key="Gray600">#475569</Color>
+    <!-- Missing intermediate grays used by Styles.xaml -->
+    <Color x:Key="Gray700">#334155</Color>
+    <Color x:Key="Gray800">#1F2937</Color>
+    <Color x:Key="Gray900">#0F172A</Color>
+    <Color x:Key="Gray950">#020617</Color>
+
+    <!-- Brand Specific Colors -->
+    <Color x:Key="Burgundy">#5C0601</Color>
+    <Color x:Key="BurgundyDark">#3F0400</Color>
+    <Color x:Key="WarmCream">#FFFDF9</Color>
+    <Color x:Key="Magenta">#C88A2B</Color>
     <Color x:Key="MidnightBlue">#190649</Color>
-    <Color x:Key="OffBlack">#1f1f1f</Color>
 
-    <Color x:Key="Gray100">#E1E1E1</Color>
-    <Color x:Key="Gray200">#C8C8C8</Color>
-    <Color x:Key="Gray300">#ACACAC</Color>
-    <Color x:Key="Gray400">#919191</Color>
-    <Color x:Key="Gray500">#6E6E6E</Color>
-    <Color x:Key="Gray600">#404040</Color>
-    <Color x:Key="Gray900">#212121</Color>
-    <Color x:Key="Gray950">#141414</Color>
+    <!-- Dashboard Sacramental Accents -->
+    <Color x:Key="MarianBlue">#1E4E8C</Color>
+    <Color x:Key="MarianBlueLight">#EFF6FF</Color>
+    <Color x:Key="EmeraldGreen">#16A34A</Color>
+    <Color x:Key="EmeraldGreenLight">#F0FDF4</Color>
+    <Color x:Key="RoyalPurple">#7C3AED</Color>
+    <Color x:Key="RoyalPurpleLight">#F5F3FF</Color>
+    <Color x:Key="ElegantGold">#C88A2B</Color>
+    <Color x:Key="ElegantGoldLight">#FFFBEB</Color>
 
+    <!-- Typography Colors -->
+    <Color x:Key="TextPrimary">#2C0200</Color>
+    <Color x:Key="TextMuted">#6E4D43</Color>
+
+    <!-- Solid Color Brushes -->
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+    <SolidColorBrush x:Key="ParishSurfaceBrush" Color="{StaticResource ParishSurface}"/>
+    <SolidColorBrush x:Key="ParishBackgroundBrush" Color="{StaticResource ParishBackground}"/>
 
+    <!-- State & Status Brushes -->
+    <SolidColorBrush x:Key="PrimaryHoverBrush" Color="{StaticResource PrimaryHover}"/>
+    <SolidColorBrush x:Key="PrimaryPressedBrush" Color="{StaticResource PrimaryPressed}"/>
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource Success}"/>
+    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}"/>
+
+    <!-- Gray Brushes -->
     <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
     <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}"/>
     <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}"/>
     <SolidColorBrush x:Key="Gray400Brush" Color="{StaticResource Gray400}"/>
     <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
+    <SolidColorBrush x:Key="Gray700Brush" Color="{StaticResource Gray700}"/>
+    <SolidColorBrush x:Key="Gray800Brush" Color="{StaticResource Gray800}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <!-- Brand Brushes -->
+    <SolidColorBrush x:Key="BurgundyBrush" Color="{StaticResource Burgundy}" />
+    <SolidColorBrush x:Key="BurgundyDarkBrush" Color="{StaticResource BurgundyDark}" />
+    <SolidColorBrush x:Key="WarmCreamBrush" Color="{StaticResource WarmCream}" />
+
+    <!-- Dashboard Brushes -->
+    <SolidColorBrush x:Key="MarianBlueBrush" Color="{StaticResource MarianBlue}" />
+    <SolidColorBrush x:Key="MarianBlueLightBrush" Color="{StaticResource MarianBlueLight}" />
+    <SolidColorBrush x:Key="MidnightBlueBrush" Color="{StaticResource MidnightBlue}" />
+    <SolidColorBrush x:Key="EmeraldGreenBrush" Color="{StaticResource EmeraldGreen}" />
+    <SolidColorBrush x:Key="EmeraldGreenLightBrush" Color="{StaticResource EmeraldGreenLight}" />
+    <SolidColorBrush x:Key="RoyalPurpleBrush" Color="{StaticResource RoyalPurple}" />
+    <SolidColorBrush x:Key="RoyalPurpleLightBrush" Color="{StaticResource RoyalPurpleLight}" />
+    <SolidColorBrush x:Key="ElegantGoldBrush" Color="{StaticResource ElegantGold}" />
+    <SolidColorBrush x:Key="ElegantGoldLightBrush" Color="{StaticResource ElegantGoldLight}" />
+
+    <!-- Typography Brushes -->
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMuted}" />
+
+    <!-- UI Component Specs -->
+    <OnPlatform x:Key="CardShadow" x:TypeArguments="Thickness">
+        <On Platform="Android, iOS, WinUI">0,2,8,0</On>
+    </OnPlatform>
+
 </ResourceDictionary>
